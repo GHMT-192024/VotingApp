@@ -16,4 +16,5 @@ votes.js - Handles Event listener for the Submit button to voter's choice of vot
 leaderboard.js - Has a fetch method to display the leaderboard (#of votes received by each Pokemon)
 server.js - This script defines all GET, POST, PUT APIs. These APIs have integrated to MYSQL database to fetch, save and update operations.
 
-
+API code (server.js) is in the parent directory
+Webpages and related javascript files are in ./public directory
