@@ -1,24 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register Yourself As A Voter</title>
     <style>
-      /* Basic styling for the UI */
-      /* Add your CSS styles here */
+      body {
+        font-family: sans-serif;
+        background-color: #f4f4f4; /* Light background color */
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        min-height: 100vh; /* Ensure full viewport height */
+        margin: 0; /* Remove default margins */
+      }
+
+      .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        width: 400px; /* Set a max width */
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333; /* Darker heading color */
+      }
+
+      label {
+        display: block; /* Labels on their own line */
+        margin-bottom: 5px;
+        color: #555; /* Slightly darker label color */
+      }
+
+      input[type="text"],
+      input[type="email"] {
+        width: calc(100% - 12px); /* Full width with padding accounted for */
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; /* Include padding in width calculation */
+      }
+
+      button[type="submit"] {
+        background-color: #007bff; /* Blue button */
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%; /* Make button full width */
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+
+      button[type="submit"]:disabled {
+        background-color: #ccc; /* Grayed out when disabled */
+        cursor: default;
+      }
     </style>
   </head>
   <body>
-    <h1>Register</h1>
-    <div id="register-list"></div>
-    <form id="add-voter-form">
-      <label for="firstname">First Name:</label>
-      <input type="text" id="firstname" name="firstname" /><br /><br />
-      <label for="lastname">Last Name:</label>
-      <input type="text" id="lastname" name="lastname" /><br /><br />
-      <label for="email">Email:</label>
-      <input type="text" id="email" name="email" /><br /><br />
-      <button type="submit">Register</button>
-    </form>
-    <script src="register.js"></script>
+    <div class="container">
+      <h1>Register</h1>
+      <form id="add-voter-form">
+        <label for="firstname">First Name:</label>
+        <input
+          type="text"
+          id="firstname"
+          name="firstname"
+          required
+        /><br /><br />
+
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" required /><br /><br />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required /><br /><br />
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+
+    <script type="module" src="register.js"></script>
   </body>
 </html>

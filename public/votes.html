@@ -3,12 +3,63 @@
   <head>
     <title>Voting Page</title>
     <style>
-      /* Basic styling for the UI */
-      /* Add your CSS styles here */
+      body {
+        font-family: sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column; /* Stack content vertically */
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        text-align: center; /* Center text within container */
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        color: #555;
+        margin-bottom: 20px;
+      }
+      label {
+        margin-right: 10px; /* Spacing between label and input/select */
+        width: 120px; /* Fixed width for labels (adjust as needed) */
+        text-align: left; /* Align label text to the left */
+      }
+
+      input[type="checkbox"] {
+        margin-right: 5px; /* Space between checkbox and label */
+      }
+
+      a {
+        display: inline-block; /* Make the link behave like a block element */
+        background-color: #007bff; /* Blue button */
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none; /* Remove underline from link */
+        cursor: pointer;
+      }
+
+      a:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
     </style>
   </head>
   <body>
-    <h1>Vote</h1>
+    <h1>Cast your Vote</h1>
     <div id="Voting-List"></div>
     <form id="add-voter-form">
       <input type="checkbox" id="1" name="Charizard" value="Charizard" />
@@ -21,12 +72,14 @@
       <label for="Machamp">Machamp</label><br />
       <input type="checkbox" id="5" name="Magneton" value="Magneton" />
       <label for="Magneton">Magneton</label><br />
-      <input type="checkbox" id="5" name="Other" value="Other" />
+      <input type="checkbox" id="6" name="Other" value="Other" />
       <label for="Other">Other</label><br />
-      <label for="basicTextBox">Enter text:</label>
-      <input type="text" id="basicTextBox" name="basicTextBox" />
+      <label for="PokemonDropdown">Pokemon Dropdown</label>
+      <select id="selectPokemon">
+        <option>Choose a Pokemon</option>
+      </select>
       <button type="submit">Vote</button>
+      <script type="module" src="votes.js"></script>
     </form>
-    <script src="votes.js"></script>
   </body>
 </html>

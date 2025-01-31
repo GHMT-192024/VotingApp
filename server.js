@@ -109,12 +109,26 @@ app.get("/api/Vote", async (req, res) => {
 //Post API to save the voted option
 app.post("/api/Vote", async (req, res) => {
   try {
-    console.error("Post API For Vote Called:");
-    const { OptionID, Votes } = req.body;
-    console.log(req.body);
+    let { selectedOption, otherText, email } = req.body;
+    if (!selectedOption) {
+      return res.status(400).send("No option selected");
+    }
+
+    // Process the vote (e.g., store in database)
+    console.log("Vote received:", selectedOption);
+    if (otherText) {
+      console.log("Other text:", otherText);
+      selectedOption = otherText;
+    }
+
+    // Need to enhance this to capture the user who registered
+    //const Email = "sstankala@gmail.com";
+    console.log("selectedOption:", selectedOption);
+    console.log("otherText:", otherText);
+    console.log("email:", email);
     const [result] = await pool.execute(
-      "INSERT INTO VotesTbl (`OptionID`, `Votes`) VALUES (?, ?)",
-      [OptionID, Votes]
+      "INSERT INTO VotesTbl (`Email`, `Character`) VALUES (?, ?)",
+      [email, selectedOption]
     );
     res
       .status(201)
@@ -169,6 +183,18 @@ app.post("/api/options", async (req, res) => {
   }
 });
 
+app.get("/api/report", async (req, res) => {
+  try {
+    const [rows] = await pool.execute(
+      "SELECT `Character`, COUNT(*) AS Count FROM VotingApp.VotesTbl GROUP BY `Character` ORDER BY Count DESC;"
+    );
+    res.json(rows); // Send the results as JSON
+  } catch {
+    console.error("Error fetching report data:", err);
+    res.status(500).json({ error: "Error fetching report data" }); // Send JSON error
+    return;
+  }
+});
 // Start the server
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

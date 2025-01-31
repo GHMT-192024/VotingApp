@@ -1,17 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Voting App</title>
     <style>
-      /* Basic styling for the UI */
-      /* Add your CSS styles here */
+      body {
+        font-family: sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column; /* Stack content vertically */
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        text-align: center; /* Center text within container */
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        color: #555;
+        margin-bottom: 20px;
+      }
+
+      a {
+        display: inline-block; /* Make the link behave like a block element */
+        background-color: #007bff; /* Blue button */
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none; /* Remove underline from link */
+        cursor: pointer;
+      }
+
+      a:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
     </style>
   </head>
   <body>
-    <h1>VotingApp</h1>
-    <div id="VotingApp Welcome Page"></div>
-    <form id="Welcome">
-      <button type="submit">Click here to Vote</button>
-    </form>
+    <div class="container">
+      <h1>Welcome To VotingApp</h1>
+      <h2>You are here to cast your vote for your favorite Pokemon</h2>
+      <a href="register.html">Click here to Vote</a>
+    </div>
   </body>
 </html>

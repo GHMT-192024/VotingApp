@@ -1,7 +1,8 @@
 // public/register.js
 //const settingsList = document.getElementById("settings-list");
 const addVoterForm = document.getElementById("add-voter-form");
-debugger;
+// In your form handling module
+
 // Handle form submission
 addVoterForm.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -11,6 +12,11 @@ addVoterForm.addEventListener("submit", async (event) => {
   const firstname = formData.get("firstname");
   const lastname = formData.get("lastname");
   const email = formData.get("email");
+
+  if (firstname.trim() == "" || lastname.trim() == "" || email.trim() == "") {
+    alert("Please fill out all the information before you register");
+    return;
+  }
 
   try {
     const response = await fetch("/api/registervoter", {
@@ -24,7 +30,9 @@ addVoterForm.addEventListener("submit", async (event) => {
     if (response.ok) {
       const data = await response.json();
       alert("Registered successfully!");
+      localStorage.setItem("registeredEmail", email);
       addVoterForm.reset();
+      window.location.href = "votes.html";
     } else {
       alert("Failed to register.");
     }
@@ -33,3 +41,9 @@ addVoterForm.addEventListener("submit", async (event) => {
     alert("An error occurred.");
   }
 });
+const formData = new FormData(addVoterForm);
+export function getRegisteredEmail(formData) {
+  // Pass formData as an argument
+  const email = formData.get("email");
+  return email;
+}
